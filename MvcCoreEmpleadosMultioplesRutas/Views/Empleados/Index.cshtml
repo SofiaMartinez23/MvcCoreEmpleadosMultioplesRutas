@@ -1,0 +1,39 @@
+﻿@model List<Empleado>
+
+@{
+    List<string> oficio = ViewData["OFICIOS"] as List<string>;
+    List<Empleado> empleados = ViewData["EMPLEADOS"] as List<Empleado>;
+}
+
+<h1>Empleados Api</h1>
+
+<form method="post">
+    <label>Selecciona un oficio</label>
+    <select name="oficio" class="form-control">
+        @foreach(string ofi in oficio){
+            <option value="@ofi">@ofi</option>
+        }
+    </select>
+    <button class="btn btn-outline-success">Buscar</button>
+</form>
+
+
+
+    <table class="table table-info table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Oficio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Empleado empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.Apellido</td>
+                    <td>@empleado.Oficio</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
